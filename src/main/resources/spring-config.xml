@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+       <context:component-scan base-package="com.eloan"/>
+       <mvc:annotation-driven/>
+
+
+    <!--配置阿里巴巴的数据源-->
+    <!-- druid  -->
+    <bean id="datasoruceAlibaba" class="com.alibaba.druid.pool.DruidDataSource" autowire="no">
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/eloan"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="tiger"></property>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="initialSize" value="3"></property>
+        <property name="minIdle" value="3"></property>
+        <property name="maxActive" value="20"></property>
+    </bean>
+
+
+    <!--配置SqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--引入数据源-->
+        <property name="dataSource" ref="datasoruceAlibaba"></property>
+        <!--加载所有映射文件-->
+        <property name="mapperLocations">
+        <value>
+            classpath:mappers/*.xml
+        </value>
+        </property>
+    </bean>
+
+    <!-- 配置Dao层：向com.ssm.dao层映射SqlSessionFactory -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.eloan.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+
+
+    <!--声明一个Service 注入到自定义Realm-->
+    <!--<bean id="accountService" class="com.ssm.service.impl.ShrioServiceImpl"/>-->
+
+    <!-- 自定义Realm -->
+    <bean id="myShiroRealm" class="com.eloan.shiro.MyShiroRealm">
+        <!-- businessManager 用来实现用户名密码的查询 -->
+        <!--<property name="shiroService" ref="accountService" />-->
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 注入realm -->
+        <property name="realm" ref="myShiroRealm"/>
+    </bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--加载管理器-->
+        <property name="securityManager" ref="securityManager" />
+        <!--没有登录的时候，跳转到这个页面-->
+
+    </bean>
+
+
+
+
+
+
+</beans>

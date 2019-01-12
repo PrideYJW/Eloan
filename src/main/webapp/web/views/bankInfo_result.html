@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>蓝源Eloan-P2P平台->绑定银行卡</title>
+<link rel="stylesheet" href="../js/bootstrap-3.3.2-dist/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="../css/core.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="../js/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.form.js"></script>
+<script type="text/javascript" src="../jquery.bootstrap.min.js"></script>
+<body>
+<div class="el-header" >
+		<div class="container" style="position: relative;">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">首页</a></li>
+			
+					<li><a href="/login.html">登录</a></li>
+					<li><a href="/register.html">快速注册</a></li>
+					
+					<li>
+						  <a class="el-current-user" href="/personal.do">${logininfo.username}</a>
+					</li>
+					<li><a  href="/recharge.do">账户充值  </a></li>
+					<li><a  href="/logout.do">注销 </a></li>
+		
+				<li><a href="#">帮助</a></li>
+			</ul>
+		</div>
+</div>
+		<!-- 网页导航 -->
+		<div class="navbar navbar-default el-navbar">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="/">
+				<img alt="Brand" src="../images/logo.png">
+			</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li id="index"><a href="/index.do">首页</a></li>
+			<li id="invest"><a href="/invest.do">我要投资</a></li>
+			<li id="borrow"><a href="/borrow.do">我要借款</a></li>
+			<li id="personal"><a href="/personal.do">个人中心</a></li>
+			<li><a href="#">新手指引</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#"+"${currentNav}").addClass("active");
+</script>
+		
+		<div class="container">
+			<div class="row">
+				<!--导航菜单-->
+				<div class="col-sm-3">
+					<ul id="menu" class="list-group">
+	<li class="list-group-item">
+		<a href="javascript:;"><span>借贷项目</span></a>
+		<ul>
+			<li name="bid"><a href="/bid_list.do"><span>投标明细</span></a></li>
+			<li name="receive"><a href="#"><span>收款明细</span></a></li>
+			<li name="bidRequest"><a href="/borrow_list.do"><span>借款项目</span></a></li>
+			<li name="borrowBidReturn"><a href="/borrowBidReturn_list.do"><span>还款明细</span></a></li>
+		</ul>
+	</li>
+	<li class="list-group-item">
+		<a href="#"><span class="text-title">我的账户</span></a>
+		<ul class="in">
+			<li name="personal"><a href="#">账户信息</a></li>
+			<li name="realAuth"><a href="/realAuth.do">实名认证</a></li>
+			<li name="userFile"><a href="/userFile.do">风控资料认证</a></li>
+			<li name="bankInfo"><a href="/bankInfo.do">银行卡管理</a></li>
+			<li name="ipLog"><a href="/ipLog.do">登录记录</a></li>
+			<li name="userInfo"><a href="/basicInfo.do"> <span>个人资料</span></a></li>
+		</ul>
+	</li>
+	<li class="list-group-item">
+		<a href="#"><span>资产详情</span></a>
+		<ul class="in">
+			<li name="accountFlow_list"><a href="">账户流水</a></li>
+			<li name="recharge"><a href="/recharge_list.do">充值明细</a></li>
+			<li name="moneyWithdraw"><a href="/moneyWithdraw.do">提现申请</a></li>
+		</ul>
+	</li>
+</ul>
+<script type="text/javascript">
+	$(".list-group-item li[name=${currentMenu}]").addClass("active");
+</script>
+				</div>
+				<!-- 功能页面 -->
+				<div class="col-sm-9">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							绑定银行卡
+						</div>
+						<div class="panel-body">
+							<h4 class="text-success ">你已经绑定了银行卡</h4>
+							<hr />
+							<table style="width: 100%;height: 100px;">
+								<tr>
+									<td><span>开户名： ${bankInfo.anonymousRealName}</span></td>
+									<td><span>开户行：<script>document.write(SITE_BANK_TYPE_NAME_MAP[${bankInfo.bankName}])</script></span></td>
+								</tr>
+								<tr>
+									<td><span>支行名称： ${bankInfo.bankForkName}</span></td>
+									<td><span>银行账号：${bankInfo.anonymousAccountNumber}</span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-foot-2">
+	<div class="context">
+		<div class="left">
+			<p>版权所有：&emsp;杨狗科技有限公司</p>
+			<p>地&emsp;&emsp;址：&emsp;湖南省长沙市岳麓区梅溪湖街道创新中心</p>
+			<p>电&emsp;&emsp;话：&emsp;18374532149&emsp;&emsp;
+			<P>邮&emsp;&emsp;箱：&emsp;18374532149.@163.com</p>
+			<p>
+				<a href="http://www.miitbeian.gov.cn" style="color: #ffffff">ICP备案
+					：&emsp;湘ICP备字1504547</a>
+			</p>
+			<p>
+				<a href="http://www.gzjd.gov.cn/wlaqjc/open/validateSite.do" style="color: #ffffff">穗公网安备：&emsp;44010650010086</a>
+			</p>
+		</div>
+		<div class="right">
+			<a target="_blank" href="http://weibo.com/ITxiaomage"><img
+				src="../images/sina.png"></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+	</body>
+</html>

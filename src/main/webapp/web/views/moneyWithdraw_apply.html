@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>蓝源Eloan-P2P平台->账户提现</title>
+<link rel="stylesheet" href="../js/bootstrap-3.3.2-dist/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="../css/core.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="../js/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.form.js"></script>
+<script type="text/javascript" src="../jquery.bootstrap.min.js"></script>
+<body>
+<div class="el-header" >
+		<div class="container" style="position: relative;">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">首页</a></li>
+			
+					<li><a href="/login.html">登录</a></li>
+					<li><a href="/register.html">快速注册</a></li>
+					
+					<li>
+						  <a class="el-current-user" href="/personal.do">${logininfo.username}</a>
+					</li>
+					<li><a  href="/recharge.do">账户充值  </a></li>
+					<li><a  href="/logout.do">注销 </a></li>
+		
+				<li><a href="#">帮助</a></li>
+			</ul>
+		</div>
+</div>
+	<div class="navbar navbar-default el-navbar">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="/">
+				<img alt="Brand" src="../images/logo.png">
+			</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li id="index"><a href="/index.do">首页</a></li>
+			<li id="invest"><a href="/invest.do">我要投资</a></li>
+			<li id="borrow"><a href="/borrow.do">我要借款</a></li>
+			<li id="personal"><a href="/personal.do">个人中心</a></li>
+			<li><a href="#">新手指引</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#"+"${currentNav}").addClass("active");
+</script>
+	
+	<div class="container">
+		<div class="row">
+			<!--导航菜单-->
+			<div class="col-sm-3">
+				<ul id="menu" class="list-group">
+	<li class="list-group-item">
+		<a href="javascript:;"><span>借贷项目</span></a>
+		<ul>
+			<li name="bid"><a href="/bid_list.do"><span>投标明细</span></a></li>
+			<li name="receive"><a href="#"><span>收款明细</span></a></li>
+			<li name="bidRequest"><a href="/borrow_list.do"><span>借款项目</span></a></li>
+			<li name="borrowBidReturn"><a href="/borrowBidReturn_list.do"><span>还款明细</span></a></li>
+		</ul>
+	</li>
+	<li class="list-group-item">
+		<a href="#"><span class="text-title">我的账户</span></a>
+		<ul class="in">
+			<li name="personal"><a href="#">账户信息</a></li>
+			<li name="realAuth"><a href="/realAuth.do">实名认证</a></li>
+			<li name="userFile"><a href="/userFile.do">风控资料认证</a></li>
+			<li name="bankInfo"><a href="/bankInfo.do">银行卡管理</a></li>
+			<li name="ipLog"><a href="/ipLog.do">登录记录</a></li>
+			<li name="userInfo"><a href="/basicInfo.do"> <span>个人资料</span></a></li>
+		</ul>
+	</li>
+	<li class="list-group-item">
+		<a href="#"><span>资产详情</span></a>
+		<ul class="in">
+			<li name="accountFlow_list"><a href="">账户流水</a></li>
+			<li name="recharge"><a href="/recharge_list.do">充值明细</a></li>
+			<li name="moneyWithdraw"><a href="/moneyWithdraw.do">提现申请</a></li>
+		</ul>
+	</li>
+</ul>
+<script type="text/javascript">
+	$(".list-group-item li[name=${currentMenu}]").addClass("active");
+</script>
+			</div>
+			<!-- 功能页面 -->
+			<div class="col-sm-9">
+				<div class="el-tip-info">
+					<h3>账户提现</h3>
+					<p>1. 本平台工作日会处理当天 17:00 之前的提款申请。</p>
+					<p>2. 为了确保银行转账成功，请您确认银行账号信息的 正确性。</p>
+					<p>3. 单笔提现范围-普通用户500.00 元 ~ 500000.00 元。</p>
+					<p>4. 单笔提现范围-VIP用户500.00 元 ~ 500000.00 元。</p>
+					<p>5. 目前提现服务费：1万元(含) 之内：2.00 元/笔；1万元（以上） ：5.00 元/笔。</p>
+					<p>6. 为避免信用卡套现，故充值15日内未投资提现按提现金额的0.4%收取提现费用。</p>
+					<p>7. 本次可提现 = 可用余额  - 最高服务费</p>
+				</div>
+				<#if !haveProcessing>
+				<div style="margin: 10px 2px;" class="row h4">
+					<div class="col-sm-4">
+						可提现金额：<span class="text-primary">${account.usableAmount} 元</span>	
+					</div>
+					<div class="col-sm-4">
+						冻结金额：<span class="text-primary">${account.freezedAmount} 元</span>
+					</div>
+				</div>
+				</#if>
+				<div>
+					<#if haveProcessing>
+						<div class="el-tip-info">
+							<p class="text-info">您有提现申请正在处理中，请完这个提现申请完成后再次申请；<a href="javascript:;">撤销提现</a></p>
+						</div>
+					<#elseif bankInfo??>
+					<form id="editForm" class="form-horizontal el-form" action="/moneyWithdraw_apply.do" method="post">
+						<div class="form-group">
+							<label class="control-label col-sm-2">开户行</label>
+							<div class="col-sm-10">
+								<label class="form-control"><script>document.write(SITE_BANK_TYPE_NAME_MAP[${bankInfo.bankName}])</script></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">开户支行</label>
+							<div class="col-sm-10">
+								<label class="form-control">${bankInfo.bankForkName}</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">银行卡号</label>
+							<div class="col-sm-10">
+								<label class="form-control">${bankInfo.anonymousAccountNumber}</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">户主姓名</label>
+							<div class="col-sm-10">
+								<label class="form-control">${bankInfo.anonymousRealName}</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">提现金额</label>
+							<div class="col-sm-10">
+								<input class="form-control" name="moneyAmount" />
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="col-sm-offset-2 btn btn-primary">确认提交</button>
+						</div>
+					</form>
+					<#else>
+						<div class="el-tip-info">
+							<p class="text-info">请先绑定银行卡，再申请提现；</p>
+						</div>
+					</#if>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<div class="container-foot-2">
+	<div class="context">
+		<div class="left">
+			<p>版权所有：&emsp;杨狗科技有限公司</p>
+			<p>地&emsp;&emsp;址：&emsp;湖南省长沙市岳麓区梅溪湖街道创新中心</p>
+			<p>电&emsp;&emsp;话：&emsp;18374532149&emsp;&emsp;
+			<P>邮&emsp;&emsp;箱：&emsp;18374532149.@163.com</p>
+			<p>
+				<a href="http://www.miitbeian.gov.cn" style="color: #ffffff">ICP备案
+					：&emsp;湘ICP备字1504547</a>
+			</p>
+			<p>
+				<a href="http://www.gzjd.gov.cn/wlaqjc/open/validateSite.do" style="color: #ffffff">穗公网安备：&emsp;44010650010086</a>
+			</p>
+		</div>
+		<div class="right">
+			<a target="_blank" href="http://weibo.com/ITxiaomage"><img
+				src="../images/sina.png"></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</body>
+</html>
