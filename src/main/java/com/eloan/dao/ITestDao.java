@@ -14,4 +14,6 @@ public interface ITestDao {
 
     public  int  d();
 
+    public  int  e();
+
 }
