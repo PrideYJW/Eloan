@@ -10,4 +10,6 @@ public interface ITestDao {
 
     public  int  b(String  q);
 
+    public int C(String a);
+
  }
