@@ -8,9 +8,10 @@ F:\project\idea\Eloan\src\main\java\com\eloan\pojo\UserFileBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\util\BidConst.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\SystemDictionaryBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\controller\IndexController.java
+F:\project\idea\Eloan\src\main\java\com\eloan\dao\IUserDao.java
+F:\project\idea\Eloan\src\main\java\com\eloan\controller\TestController.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\SystemAccountFlowBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\BidRequestBean.java
-F:\project\idea\Eloan\src\main\java\com\eloan\pojo\LogInInfoBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\SystemAccountBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\CompanyBankInfoBean.java
 F:\project\idea\Eloan\src\main\java\com\eloan\pojo\VedioAuthBean.java
