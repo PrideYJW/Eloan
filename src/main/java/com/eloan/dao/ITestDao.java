@@ -12,4 +12,6 @@ public interface ITestDao {
 
     public int C(String a);
 
+
+    public  int D();
  }
