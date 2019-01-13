@@ -12,6 +12,7 @@ com\eloan\pojo\LogoInFoBean.class
 com\eloan\pojo\AccountBean.class
 com\eloan\pojo\SystemAccountBean.class
 com\eloan\pojo\SystemDictionaryItemBean.class
+com\eloan\controller\TestController.class
 com\eloan\pojo\RealAuthBean.class
 com\eloan\pojo\RechargeOfflineBean.class
 com\eloan\pojo\BidBean.class
@@ -19,6 +20,7 @@ com\eloan\pojo\UserInFoBean.class
 com\eloan\dao\ITestDao.class
 com\eloan\shiro\MyShiroRealm.class
 com\eloan\pojo\PaymentScheduleDetailBean.class
+com\eloan\dao\IUserDao.class
 com\eloan\pojo\SystemAccountFlowBean.class
 com\eloan\pojo\IpLogBean.class
 com\eloan\util\BidConst.class
